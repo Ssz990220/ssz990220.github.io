@@ -2,14 +2,16 @@
 title: "Hardware-Accelerated Ray Tracing for Discrete and Continuous Collision Detection on GPUs"
 collection: publications
 permalink: /publication/RTCD
-excerpt: 'This paper introduces hardware-accelerated ray-tracing algorithms for robot collision detection, enabling faster mesh-to-mesh and sphere-to-mesh collision queries. The methods show up to 9x speed improvements in continuous collision detection compared to state-of-the-art techniques, with detailed analysis of speed-accuracy tradeoffs.'
-github: 'Release soon'
-date: 2024-09-16
-venue: 'Arxiv'
-paperurl: 'https://arxiv.org/abs/2409.09918'
-citation: 'Sui S, Sentis L, Bylard A. Hardware-Accelerated Ray Tracing for Discrete and Continuous Collision Detection on GPUs[J]. arXiv preprint arXiv:2409.09918, 2024.'
+excerpt: 'GPU ray tracing accelerates mesh-to-mesh collision checks for discrete robot poses and swept-sphere checks along continuous robot trajectories.'
+github: 'https://github.com/Ssz990220/RTCollisionDetection'
+date: 2025-09-02
+venue: 'IEEE International Conference on Robotics and Automation (ICRA)'
+paperurl: 'https://doi.org/10.1109/ICRA55743.2025.11128528'
+citation: 'S. Sui, L. Sentis, and A. Bylard, “Hardware-Accelerated Ray Tracing for Discrete and Continuous Collision Detection on GPUs,” 2025 IEEE International Conference on Robotics and Automation (ICRA), 2025.'
 ---
-Calibrate a dual-robot system by modeling and solving the problem with Geometric Algebra and Geometric Calculus. The proposed method is <b>~4x</b> faster than the state-of-the-art algorithm while maintain <b>the same level of accuracy</b>.
+We use hardware-accelerated GPU ray tracing to check robot collisions at discrete poses and along continuous trajectories. The discrete method tests robot link meshes directly against obstacle meshes. The continuous method approximates the robot with spheres and checks the volumes they sweep along piecewise-linear or quadratic B-spline paths.
+
+[IEEE Xplore](https://doi.org/10.1109/ICRA55743.2025.11128528) · [arXiv preprint](https://arxiv.org/abs/2409.09918) · [Code on GitHub](https://github.com/Ssz990220/RTCollisionDetection)
 
 ## Algorithms
 ![](../images/RTCD/RTCD.png)
@@ -22,6 +24,4 @@ Demonstration of our collision detection methods: discrete-pose collision detect
 ![](../images/RTCD/DCDResult.png)
 ![](../images/RTCD/CCDResult.png)
 
-For robot link meshes totaling 24k triangles and obstacle meshes of over 190k triangles, our methods were up to 3 times faster in batched discrete-pose queries than a state-of-the-art GPU-based method using a sphere robot representation. For the same obstacle mesh scene, our sphere-robot continuous collision detection was up to 9 times faster depending on trajectory batch size.
-
-[Download paper here](https://arxiv.org/abs/2409.09918)
+The arXiv preprint reports speedups of up to 3× for batched discrete-pose queries and up to 9× for continuous queries. The ICRA paper reports up to 2.8× for batched discrete-pose queries and up to 7× for continuous queries in its reported test conditions.
